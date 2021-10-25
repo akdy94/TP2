@@ -57,5 +57,5 @@ jobs:
         with:
           context: ./httpd
           tags: ${{secrets.DOCKER_USERNAME}}/tp-devops-epf:httpd
-          push: ${{ github.ref == 'refs/heads/master }}
+          push: ${{ github.ref == 'refs/heads/main }}
           
