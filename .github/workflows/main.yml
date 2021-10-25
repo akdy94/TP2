@@ -47,12 +47,14 @@ jobs:
           context: ./simple-api
           # Note: tags has to be all lower-case
           tags:  ${{secrets.DOCKER_USERNAME}}/tp-devops-epf:simple-api
+          push: ${{github.ref == 'refs/heads/master'}}
 
       - name: Build image and push database
         uses: docker/build-push-action@v2
         with:
           context: ./database
           tags: ${{secrets.DOCKER_USERNAME}}/tp-devops-epf:database
+          push: ${{github.ref == 'refs/heads/master'}}
 
 
       - name: Build image and push httpd
@@ -60,5 +62,5 @@ jobs:
         with:
           context: ./httpd
           tags: ${{secrets.DOCKER_USERNAME}}/tp-devops-epf:httpd
-          push: ${{github.ref == 'refs/heads/master}}
+          push: ${{github.ref == 'refs/heads/master'}}
           
